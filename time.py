@@ -17,7 +17,7 @@ def answer ( y=0,  mt=0, w=0,  d=0,  h=0,  m=0,  s=0):
 
 	now = datetime.datetime.now()
 	change = datetime.timedelta( weeks =w, days=d, hours = h, minutes =m, seconds = s)
-	print (now + change)
+	#print (now + change)
 
 ## categories of words (dictionaries or associative arrays)
 Date = {"aaj":"0", "kal":"1", "parson":"2", "dashak":0, "mahine":"0", "hafte":0, "din":"0", "monday":"0", "tuesday":"0", "wednesday":"0", "thursday":"0", "friday":"0", "saturday":"0", "sunday":"0", "saal":"0", "somvar":0, "mangalvar":0, "budhvar":"0", "guruvar":0, "shukravar":0, "shanivar":0, "january":0, "february":0, "march":0, "april":0, "may":0, "june":0, "july":0, "august":0, "september":0, "october":0, "november":0, "december":0}
@@ -38,37 +38,46 @@ check = 0
 ## list of lists
 Stack_of_Stacks = []
 
+Stack_Index = []
+
+Final = {'Date':[], 'Time':[]}
+
 ## Algorithm to fill all the words in stack
 for word in words:
 
 	if word in Separators:
 
-		prev_word = words[words.index(word)-1]
+		#prev_word = words[words.index(word)-1]
 
-		if prev_word in Date:
+		if check == 7:
 			copy = Stack_Date[:]
 			Stack_of_Stacks.append(copy)
-			print (Stack_Date, "Date Stack goes in Full Stack \n")
-			print (Stack_of_Stacks, "\n")
+			#print (Stack_Date, "Date Stack goes in Full Stack \n")
+			#print (Stack_of_Stacks, "\n")
 			Stack_Date.clear()
 			Stack_Date = [x for x in Stack_Date if x]
-			print (Stack_Date, "Date Stack Cleared \n")
-			print (Stack_of_Stacks, "\n")
+			#print (Stack_Date, "Date Stack Cleared \n")
+			#print (Stack_of_Stacks, "\n")
+			Stack_Index.append("Date")
+			Final['Date'].append(copy)
 			
-		if prev_word in Time:
+		if check == 8:
 			copy = Stack_Time[:]
 			Stack_of_Stacks.append(copy)
-			print (Stack_Time, "Time Stack goes in Full Stack \n")
-			print (Stack_of_Stacks, "\n")
+			#print (Stack_Time, "Time Stack goes in Full Stack \n")
+			#print (Stack_of_Stacks, "\n")
 			Stack_Time.clear()
 			Stack_Time = [x for x in Stack_Time if x]
-			print (Stack_Time, "Time Stack Cleared \n")
-			print (Stack_of_Stacks, "\n")
+			#print (Stack_Time, "Time Stack Cleared \n")
+			#print (Stack_of_Stacks, "\n")
+			Stack_Index.append("Time")
+			Final['Time'].append(copy)
 			
 		Stack_of_Stacks.append(word)
-		print(word, "goes in Full Stack \n")
-		print (Stack_of_Stacks, "\n")
+		#print(word, "goes in Full Stack \n")
+		#print (Stack_of_Stacks, "\n")
 		check = 0
+		Stack_Index.append(word)
 		
 ## if next and prev stack is empty then fill accordingly
 	if len(Stack_Next)==0 and len(Stack_Prev)==0:
@@ -78,40 +87,44 @@ for word in words:
 			if(check == 8):
 				copy = Stack_Time[:]
 				Stack_of_Stacks.append(copy)
-				print (Stack_Time, "Time Stack goes in Full Stack \n")
-				print (Stack_of_Stacks, "\n")
+				#print (Stack_Time, "Time Stack goes in Full Stack \n")
+				#print (Stack_of_Stacks, "\n")
 				Stack_Time.clear()
 				Stack_Time = [x for x in Stack_Time if x]
-				print (Stack_Time, "Time Stack Cleared \n")
-				print (Stack_of_Stacks, "\n")
+				#print (Stack_Time, "Time Stack Cleared \n")
+				#print (Stack_of_Stacks, "\n")
+				Stack_Index.append("Time")
+				Final['Time'].append(copy)
 
 			Stack_Date.append(word)
 			check = 7
-			print (word, "goes in Date \n")
+			#print (word, "goes in Date \n")
 
 		if word in Time:
 
 			if(check == 7):
 				copy = Stack_Date[:]
 				Stack_of_Stacks.append(copy)
-				print (Stack_Date, "Date Stack goes in Full Stack \n")
-				print (Stack_of_Stacks, "\n")
+				#print (Stack_Date, "Date Stack goes in Full Stack \n")
+				#print (Stack_of_Stacks, "\n")
 				Stack_Date.clear()
 				Stack_Date = [x for x in Stack_Date if x]
-				print (Stack_Date, "Date Stack Cleared \n")
-				print (Stack_of_Stacks, "\n")
+				#print (Stack_Date, "Date Stack Cleared \n")
+				#print (Stack_of_Stacks, "\n")
+				Stack_Index.append("Date")
+				Final['Date'].append(copy)
 
 			Stack_Time.append(word)
 			check = 8
-			print (word, "goes in Time \n")
+			#print (word, "goes in Time \n")
 
 		if word in DateTime:
 			if DateTime[word]==1:
 				Stack_Next.append(word)
-				print (word, "goes in Next \n")
+				#print (word, "goes in Next \n")
 			else :
 				Stack_Prev.append(word)
-				print (word, "goes in Prev \n")
+				#print (word, "goes in Prev \n")
 
 ## if not empty then word in datetime(stack 3) is filled first in either of two stacks 
 	elif len(Stack_Prev)!=0:
@@ -120,26 +133,28 @@ for word in words:
 
 		if check==7:
 			Stack_Date.append(temporary)
-			print (temporary, "goes in Date from Prev\n")
+			#print (temporary, "goes in Date from Prev\n")
 
 		elif check==8:
 			Stack_Time.append(temporary)
-			print (temporary, "goes in Time from Prev\n")
+			#print (temporary, "goes in Time from Prev\n")
 
 		if word in Date:
 
 			if(check == 8):
 				copy = Stack_Time[:]
 				Stack_of_Stacks.append(copy)
-				print (Stack_Time, "Time Stack goes in Full Stack \n")
-				print (Stack_of_Stacks, "\n")
+				#print (Stack_Time, "Time Stack goes in Full Stack \n")
+				#print (Stack_of_Stacks, "\n")
 				Stack_Time.clear()
 				Stack_Time = [x for x in Stack_Time if x]
-				print (Stack_Time, "Time Stack Cleared \n")
-				print (Stack_of_Stacks, "\n")
+				#print (Stack_Time, "Time Stack Cleared \n")
+				#print (Stack_of_Stacks, "\n")
+				Stack_Index.append("Time")
+				Final['Time'].append(copy)
 		
 			Stack_Date.append(word)
-			print (word, "goes in Date \n")
+			#print (word, "goes in Date \n")
 			check = 7
 
 		if word in Time:
@@ -147,15 +162,17 @@ for word in words:
 			if(check == 7):
 				copy = Stack_Date[:]
 				Stack_of_Stacks.append(copy)
-				print (Stack_Date, "Date Stack goes in Full Stack \n")
-				print (Stack_of_Stacks, "\n")
+				#print (Stack_Date, "Date Stack goes in Full Stack \n")
+				#print (Stack_of_Stacks, "\n")
 				Stack_Date.clear()
 				Stack_Date = [x for x in Stack_Date if x]
-				print (Stack_Date, "Date Stack Cleared \n")
-				print (Stack_of_Stacks, "\n")
+				#print (Stack_Date, "Date Stack Cleared \n")
+				#print (Stack_of_Stacks, "\n")
+				Stack_Index.append("Date")
+				Final['Date'].append(copy)
 
 			Stack_Time.append(word)
-			print (word, "goes in Time \n")
+			#print (word, "goes in Time \n")
 			check = 8
 
 		if word in DateTime:
@@ -164,10 +181,10 @@ for word in words:
 
 			if DateTime[word]==1:
 				Stack_Next.append(word)
-				print (word, "goes in Next \n")
+				#print (word, "goes in Next \n")
 			else :
 				Stack_Prev.append(word)
-				print (word, "goes in Prev \n")
+				#print (word, "goes in Prev \n")
 
 	elif len(Stack_Next)!=0:
 
@@ -178,68 +195,78 @@ for word in words:
 
 		if word in Date:
 			Stack_Date.extend(temp)
-			print (temp, "goes in Date from Next\n")
+			#print (temp, "goes in Date from Next\n")
 			temp.clear()
 
 			if(check == 8):
 				copy = Stack_Time[:]
 				Stack_of_Stacks.append(copy)
-				print (Stack_Time, "Time Stack goes in Full Stack \n")
-				print (Stack_of_Stacks, "\n")
+				#print (Stack_Time, "Time Stack goes in Full Stack \n")
+				#print (Stack_of_Stacks, "\n")
 				Stack_Time.clear()
 				Stack_Time = [x for x in Stack_Time if x]
-				print (Stack_Time, "Time Stack Cleared \n")
-				print (Stack_of_Stacks, "\n")
+				#print (Stack_Time, "Time Stack Cleared \n")
+				#print (Stack_of_Stacks, "\n")
+				Stack_Index.append("Time")
+				Final['Time'].append(copy)
 
 			Stack_Date.append(word)
-			print (Stack_Date)
-			print (word, "goes in Date \n")
+			#print (Stack_Date)
+			#print (word, "goes in Date \n")
 			check = 7
 		
 		elif word in Time:
 			Stack_Time.extend(temp)
-			print (temp, "goes in Time from Next\n")
+			#print (temp, "goes in Time from Next\n")
 			temp.clear()
 
 			if(check == 7):
 				copy = Stack_Date[:]
 				Stack_of_Stacks.append(copy)
-				print (Stack_Date, "Date Stack goes in Full Stack \n")
-				print (Stack_of_Stacks, "\n")
+				#print (Stack_Date, "Date Stack goes in Full Stack \n")
+				#print (Stack_of_Stacks, "\n")
 				Stack_Date.clear()
 				Stack_Date = [x for x in Stack_Date if x]
-				print (Stack_Date, "Date Stack Cleared \n")
-				print (Stack_of_Stacks, "\n")
+				#print (Stack_Date, "Date Stack Cleared \n")
+				#print (Stack_of_Stacks, "\n")
+				Stack_Index.append("Date")
+				Final['Date'].append(copy)
 
 			Stack_Time.append(word)
-			print (word, "goes in Time \n")
+			#print (word, "goes in Time \n")
 			check = 8
 		
 		if word in DateTime:
 
 			if DateTime[word]==1:
 				Stack_Next.append(word)
-				print (word, "goes in Next \n")
+				#print (word, "goes in Next \n")
 			else :
 				Stack_Prev.append(word)
-				print (word, "goes in Prev \n")
+				#print (word, "goes in Prev \n")
 
 	if words.index(word) == len(words)-1:	
 		if len(Stack_Date)!=0:
 			copy = Stack_Date[:]
 			Stack_of_Stacks.append(copy)
-			print (Stack_Date, "Last Stack(Date) goes in Full Stack")
-			print (Stack_of_Stacks, "\n")
+			#print (Stack_Date, "Last Stack(Date) goes in Full Stack")
+			#print (Stack_of_Stacks, "\n")
+			Stack_Index.append("Date")
+			Final['Date'].append(copy)
 
 		elif len(Stack_Time)!=0:
 			copy = Stack_Time[:]
 			Stack_of_Stacks.append(copy)
-			print (Stack_Time, "Last Stack(Time) goes in Full Stack")
-			print (Stack_of_Stacks, "\n")
+			#print (Stack_Time, "Last Stack(Time) goes in Full Stack")
+			#print (Stack_of_Stacks, "\n")
+			Stack_Index.append("Time")
+			Final['Time'].append(copy)
 
 
 
 print (Stack_of_Stacks, "\n")
+print (Stack_Index, "\n")
+print (Final)
 
 ## empty function makes empty
 
