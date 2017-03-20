@@ -1,3 +1,6 @@
+import data
+from data import *
+
 import datetime 
 from dateutil.relativedelta import *
 
@@ -65,13 +68,7 @@ def set_datetime (y=0, mt=0, d=0, h=0, m=0, s=0, c="0"):
 ## make function for am/pm
 
 
-## categories of words (dictionaries or associative arrays)
-# you cannot use or for strings, find another better way
-Date = {"aaj":[0,"day"], "kal":[1,"day"], "parson":[2,"day"], "narson":[3,"day"], "dashak":[10,"year"], "tarikh":0, "mahine":[0,"months"], "mahina":[0,"months"], "hafte":[0,"week"], "din":[0,"day"], "divas":[0,"day"], "dino":[0,"day"], "saal":0, "varsh":0, "monday":[MO,"weekday"], "tuesday":["TU","weekday"], "wednesday":["WE","weekday"], "thursday":["TH","weekday"], "friday":["FR","weekday"], "saturday":["SA","weekday"], "sunday":["SU","weekday"], "somvar":["MO","weekday"], "mangalvar":["TU","weekday"], "budhvar":["WE","weekday"], "guruvar":["TH","weekday"], "shukravar":["FR","weekday"], "shanivar":["SA","weekday"], "ravivar":["SU","weekday"], "january":[1,"month"], "february":[2,"month"], "march":[3,"month"], "april":[4,"month"], "may":[5,"month"], "june":[6,"month"], "july":[7,"month"], "august":[8,"month"], "september":[9,"month"], "october":[10,"month"], "november":[11,"month"], "december":[12,"month"]}
-Time = {"abhi":0, "baje":0, "baj":0, "ghante":0, "ghanta":1, "ghanton":1, "subah":0, "shaam":0, "sandhya":0, "dopahar":0, "raat":0, "minutes":0, "minute":1, "seconds":0, "second":1}
-DateTime = {"baad":[1,-1], "is":[0,1], "pahle":[-1,-1], "pichle":[-1,1], "agle":[1,1], "aadhe":[0.5,1], "aadha":[0.5,1], "dedh":[1.5,1], "dhaai":[2.5,1], "saade":[0.5,1]}
-Numbers = {'1':[1,1], 'ek':[1,1], 'pahla':[1,1], '2':[2,1], 'do':[2,1], 'doosra':[2,1], '3':[3,1], 'teen':[3,1], 'teesra':[3,1], '4':[4,1], 'chaar':[4,1], 'choutha':[4,1], '5':[5,1], 'paanch':[5,1], 'paanchva':[5,1], '6':[6,1], 'chhe':[6,1], 'chhata':[6,1], '7':[7,1], 'saat':[7,1], 'saatva':[7,1], '8':[8,1], 'aath':[8,1], 'aathva':[8,1], '9':[9,1], 'nau':[9,1], 'nahla':[9,1], '10':[10,1], 'das':[10,1], 'dasva':[10,1], '11':[11,1], 'gyarah':[11,1], 'gyarva':[11,1], '12':[12,1], 'barah':[12,1], 'barvan':[12,1], '13':[13,1], 'terah':[13,1], '14':[14,1], 'chaudah':[14,1], '15':[15,1], 'pandrah':[15,1], '16':[16,1], 'solah':[16,1], '17':[17,1], 'satrah':[17,1], '18':[18,1], 'atharah':[18,1], '19':[19,1], 'unnish':[19,1], '20':[20,1], 'bees':[20,1], '21':[21,1], 'ikkish':[21,1], '22':[22,1], 'baaish':[22,1], '23':[23,1], 'teish':[23,1], '24':[24,1], 'chaubish':[24,1], '25':[25,1], 'pachhish':[25,1], '26':[26,1], 'chhabish':[26,1], '27':[27,1], 'sattaish':[27,1], '28':[28,1], 'atthaish':[28,1], '29':[29,1], 'untish':[29,1], '30':[30,1], 'teesh':[30,1], '31':[31,1], 'ikattish':[31,1]}
-Separators = {"se":0, "ke":0, "aur":0, "evam":0, "lekin":0, "par":0, "magar":0, "kintu":0, "parantu":0, "ya":0, "kyunki":0, "isliye":0}
+
 
 ## four stacks
 Stack_Date = []
@@ -333,7 +330,19 @@ for word in words:
 
 			elif check==8:
 				Stack_Time.append(temporary)
-				#print (temporary, "goes in Time from Prev\n")	
+				#print (temporary, "goes in Time from Prev\n")
+
+		if len(Stack_Next)!=0:
+
+			temporary = Stack_Next.pop()
+
+			if check==7:
+				Stack_Date.append(temporary)
+				#print (temporary, "goes in Date from Next\n")
+
+			elif check==8:
+				Stack_Time.append(temporary)
+				#print (temporary, "goes in Time from Next\n")	
 
 		if len(Stack_Date)!=0:
 			copy = Stack_Date[:]
@@ -411,8 +420,24 @@ for date in Final['Date']:
 
 			### Instead of using [0] use previous word for (aaj agle mahine pichle saal)
 
-		## if weekday
-		## and correspondigly agle is pichle set and pass weekday
+	#	for word in date:
+
+			#if Date[word][1] == 'weekday':
+
+			#	prev_word = date[date.index(word)-1]
+
+			#	if prev_word == 'agle':
+
+			#		print ("")
+
+			#	elif prev_word == 'pichle':
+
+			#		print ("")
+
+			#	elif prev_word == 'is':
+
+			#		print ("")
+
 		## pass in format of WE(+1) where WE is not string
 
 		Answer['Date'].append(change_datetime("date",y,mt,w,d))
@@ -443,19 +468,25 @@ for date in Final['Date']:
 					elif Date[next_word][1] == 'month':
 						d = Numbers[word][0]
 			
-			fulldate.append(set_datetime(y,mt,d))
+			#fulldate.append(set_datetime(y,mt,d))
+
+			## Do something like if month in date then d=number , mt = month[0]
 
 		for word in date:
 
 			if (word in Date) and (Date[word][1] == 'month'):
 				mt = Date[word][0]
+				next_word = date[date.index(word)+1]
+
+				if next_word in Numbers:
+					d = Numbers[next_word][0]
 			#obviously word is in Date
 
 			if (word.isdigit()) and (len(word)==4):
 				y = int(word)
 
-			if (y!=0) and (mt!=0):
-				fulldate[0] += (set_datetime(y, mt))
+			if len(date) == date.index(word)+1:
+				fulldate.append(set_datetime(y, mt, d))
 
 			if word == 'aaj':
 				fulldate.append(change_datetime("date",0,0,0,0))
@@ -475,7 +506,9 @@ for date in Final['Date']:
 			# Difficult to implement without  DateTime words i.e. to set the day according to month and year
 			## pseudocode
 			## if (word in Date) and (Date[word][1] == 'weekday'):
-			##     if (y!=0) and (mt!=0):
+				#if (y!=0) and (mt!=0):
+
+					#print ("")
 			##          call weekday function passing month and year to get the date	
 
 		Answer['Date'].append(fulldate)
@@ -536,11 +569,11 @@ for time in Final['Time']:
 						h = Numbers[word][0]
 						print (h, "h")
 
-					elif (next_word == 'minute') or (next_word == 'minutes'): ## or ke baad wale main dikkar hai
+					elif (next_word == 'minute') or (next_word == 'minutes') or (next_word == 'min'): ## or ke baad wale main dikkar hai
 						m = Numbers[word][0]
 						print (m, "m")
 
-					elif (next_word == 'second') or (next_word == 'seconds'):
+					elif (next_word == 'second') or (next_word == 'seconds') or (next_word == 'sec'):
 						s = Numbers[word][0]
 						print (s, "s")
 
@@ -553,10 +586,10 @@ for time in Final['Time']:
 			elif 'shaam' or 'sandhya' in time: ## sandhya to aa hi nahi raha
 				c = "PM"
 
-			elif (('raat' in time) and (0 <= h < 6)):
+			elif ('raat' in time) and (0 <= h < 6):
 				c = "AM"
 
-			elif (('raat' in time) and (6 <= h < 12)):
+			elif ('raat' in time) and (6 <= h < 12):
 				c = "PM"
 
 			print (c, "c")
