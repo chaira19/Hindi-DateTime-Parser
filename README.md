@@ -16,7 +16,7 @@ Extract the Date and Time related phrases from the sentence written in English M
 ### Using in your own project
 1) In root directory, git clone https://github.com/Chirayu-sopho/Hindi-DateTime-Parser.git
 2) In python, import hdtp
-3) print (hdtp.HindiParser("kal dopahar")
+3) print (hdtp.HindiParser("kal dopahar"))<br>
 [print is no longer a statement in python 3]
 
 ## Contribution
