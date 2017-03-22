@@ -6,7 +6,7 @@ from parser import *
 
 def HindiParser(string):
 
-	## convert inpurt to lower case
+	## convert input to lower case
 	string = string.lower()
 
 	## split the input into words(list)
@@ -21,6 +21,16 @@ def HindiParser(string):
 	Answer = get_parsed(Final)
 
 	return Answer
+
+def GetEmails(string):
+
+	string = string.lower()
+
+	words = string.split(" ")
+
+	emails = get_emails_parsed(words)
+
+	return emails
 
 
 

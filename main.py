@@ -24,6 +24,12 @@ Answer = get_parsed(Final)
 
 print (Answer)
 
+emails = get_emails(words)
+
+if len(emails)!=0:
+
+	print (emails)
+
 
 
 

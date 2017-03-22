@@ -256,3 +256,15 @@ def get_parsed(Final={}):
 				Answer['Time'].append(duration)
 
 	return Answer
+
+def get_emails_parsed(words):
+
+	emails = []
+
+	for word in words:
+
+		if ('.' in word) and ('@' in word):
+
+			emails.append(word)
+
+	return emails 
