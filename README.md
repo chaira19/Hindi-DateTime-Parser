@@ -6,7 +6,7 @@
 Extract the Date and Time related phrases from the sentence written in English Manner and Hindi Language (Hinglish) and tells the exact date and time correspondingly. Built from scratch.
 
 ## Few Examples
-![](http://i.imgur.com/ZaM5RJR.png)
+![](http://i.imgur.com/XMa4eQt.png)
 
 ## Usage
 ### Running the code at terminal
