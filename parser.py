@@ -268,3 +268,30 @@ def get_emails_parsed(words):
 			emails.append(word)
 
 	return emails 
+
+def get_numbers_parsed(words):
+
+	phonenumbers = []
+
+	for word in words:
+
+		if (len(word) == 10) and (word.isdigit()):
+
+			phonenumbers.append(word) 
+
+		if (len(word) == 12) and (word.isdigit()) and (word[0] == '9') and (word[1] == '1'):
+
+			new_word = word[2:]
+			phonenumbers.append(new_word)
+
+		if (len(word) == 13) and (word[:3] == '+91'):
+
+			new_word = word[3:]
+			phonenumbers.append(new_word)
+
+		if (len(word) == 11) and (word[0] == '0') and (word.isdigit()):
+
+			new_word = word[1:]
+			phonenumbers.append(new_word)
+
+	return phonenumbers

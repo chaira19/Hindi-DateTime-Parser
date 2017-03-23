@@ -32,6 +32,14 @@ def GetEmails(string):
 
 	return emails
 
+def GetIndianPhoneNumbers(string):
+
+	words = string.split(" ")
+
+	phonenumbers = get_numbers_parsed(words)
+
+	return phonenumbers
+
 
 
 
