@@ -19,6 +19,16 @@ Extract the Date and Time related phrases from the sentence written in English M
 3) print (hdtp.HindiParser("kal dopahar"))<br>
 [print is no longer a statement in python 3]
 
+## New Features
+In root directory, python<br>
+\>>>import hdtp<br> 
+\>>>print (hdtp.GetEmails("input text"))<br> 
+{Gives list of emails in the input text}<br> 
+\>>>print (hdtp.GetIndianPhoneNumbers("input text"))<br> 
+{Gives list of phone numbers from the text written in Indian formats)<br> 
+\>>>print (hdtp.DiseaseFinder("en", "input text here"))<br> 
+{Gives the disease and its definition from the database.txt corresponding to the input text}<br>
+
 ## Contribution
 Contributions can make the implementation applicable for a wider range of data. You may contribute as follows:
 1) Implementing //TODOs in the comments in the files.
