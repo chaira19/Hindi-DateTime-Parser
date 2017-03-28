@@ -40,6 +40,25 @@ def GetIndianPhoneNumbers(string):
 
 	return phonenumbers
 
+def DiseaseFinder(ln, string): 
+
+	## use language detection
+	## or convert without depending on input language
+
+	if (ln == "en") or (ln == "english"):
+
+		disease_name = get_disease(string)
+		return disease_name
+
+	if (ln == "hi") or (ln == "hindi"):
+
+		##first translate string
+		disease_name = get_disease(string)
+		return disease_name
+
+
+
+
 
 
 
