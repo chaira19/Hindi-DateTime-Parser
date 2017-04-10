@@ -179,9 +179,14 @@ def get_sentences(str):
 			#print (new_word)
 			#print (new_str2)
 
+		if '.' in word[0:len(word)-2]:
+
+			new_word = word.replace('.', '[dot]')
+			str = str.replace(word, new_word)
+
 	sentences = re.split("[ ]*[.|?|!|!!]+[ ]*", str)
 
-	if str[len(str)-1] == '.' or str[len(str)-1] == '?' or 2[len(str)-1] == '!':
+	if (str[len(str)-1] == '.') or (str[len(str)-1] == '?') or (str[len(str)-1] == '!'):
 
 		sentences.pop()
 
