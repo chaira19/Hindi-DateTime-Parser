@@ -184,13 +184,24 @@ def get_sentences(str):
 			new_word = word.replace('.', '[dot]')
 			str = str.replace(word, new_word)
 
+	for letter in str:
+
+		if letter == '.':
+			SentenceType.append("Assertive")
+
+		if letter == '?':
+			SentenceType.append("Interrogative")
+
+		if letter == '!' or letter == '!!':
+			SentenceType.append('Exclamatory')
+
 	sentences = re.split("[ ]*[.|?|!|!!]+[ ]*", str)
 
 	if (str[len(str)-1] == '.') or (str[len(str)-1] == '?') or (str[len(str)-1] == '!'):
 
 		sentences.pop()
-
-	return sentences
+	
+	return dict(zip(sentences, SentenceType))
 
 	## TODOs
 	## Extend Abbrs list
@@ -199,6 +210,8 @@ def get_sentences(str):
 	## what if sentence doesn't end with !!? Get the expression from this word.
 	## If already a new line exist.
 	## Also implement through machine learning to obtain results without help of punctuation.
+	## Sentence Type : What about Imperative, compound, complex etc. Exclamatory Sentence or Word
+	## ensure sentences are returned sequentially
 
 
 
