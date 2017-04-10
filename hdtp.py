@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+
 import stack
 from stack import *
 
@@ -57,6 +59,11 @@ def DiseaseFinder(ln, string):
 		return disease_name
 
 
+def GetSentences(str):
+
+	return get_sentences(str)
+
+## if input text is nul for every function, ask for the text
 
 
 

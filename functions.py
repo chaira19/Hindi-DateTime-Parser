@@ -146,6 +146,54 @@ def get_disease (string):
 	## find a way like , and parameters for passing more than value in relplace
 
 	return answer
+	
+def get_sentences(str):
+
+	import re
+	## use of regular expressions
+	
+	## str cannot be changed further, always make a new object
+
+	words = str.split(" ")
+
+	Abbrs = ['Mr.', 'mr.', 'Mrs.', 'mrs.', 'Dr.', 'dr.' , 'Er.', 'er.', 'Prof.', 'prof.', 'Br.', 'br.', 'Fr.', 'fr.', 'Sr.', 'sr.', 'Jr.', 'jr.']
+	SentenceType = []
+
+	for abbr in Abbrs:
+
+		if abbr in words:
+			new_word = abbr.replace(abbr[len(abbr)-1], "")
+			str = str.replace(abbr, new_word)
+			#print (new_str)
+
+			## str.replace(abbr[len(abbr)-1], " ")
+			## Do directly in string without using words
+
+	for word in words:
+
+		if re.findall(r'\.(.)+\.', word):
+			
+			new_word = word.replace('.','')
+			str = str.replace(word, new_word)
+			#print (word)
+			#print (new_word)
+			#print (new_str2)
+
+	sentences = re.split("[ ]*[.|?|!|!!]+[ ]*", str)
+
+	if str[len(str)-1] == '.' or str[len(str)-1] == '?' or 2[len(str)-1] == '!':
+
+		sentences.pop()
+
+	return sentences
+
+	## TODOs
+	## Extend Abbrs list
+	## Dots back in sentences
+	## If abbr of acronyms with dots at end of a sentence?
+	## what if sentence doesn't end with !!? Get the expression from this word.
+	## If already a new line exist.
+	## Also implement through machine learning to obtain results without help of punctuation.
 
 
 
