@@ -63,6 +63,10 @@ def GetSentences(str):
 
 	return get_sentences(str)
 
+def GetTokens(str):
+
+	return get_tokens(str)
+
 ## if input text is nul for every function, ask for the text
 
 

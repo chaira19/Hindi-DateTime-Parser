@@ -213,6 +213,14 @@ def get_sentences(str):
 	## Sentence Type : What about Imperative, compound, complex etc. Exclamatory Sentence or Word
 	## ensure sentences are returned sequentially
 
+def get_tokens(str):
+
+	words = str.split(" ")
+
+	return words
+
+	## Make an algorithm for different kind of words for forming effective tokens before returning
+
 
 
 
