@@ -29,6 +29,10 @@ In root directory, python<br>
 \>>>print (hdtp.DiseaseFinder("en", "input text here"))<br> 
 {Gives the disease and its definition from the database.txt corresponding to the input text}<br>
 
+## NLP Features
+\>>>print (hdtp.GetSentences("text"))
+\>>>print (hdtp.GetTokens("text"))
+
 ## Contribution
 Contributions can make the implementation applicable for a wider range of data. You may contribute as follows:
 1) Implementing //TODOs in the comments in the files.
