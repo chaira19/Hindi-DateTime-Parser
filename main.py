@@ -1,3 +1,6 @@
+import voice
+from voice import *
+
 import stack
 from stack import *
 
@@ -6,7 +9,8 @@ from parser import *
 
 ## get the input
 ## input or raw_input
-string = input("Give the text:")
+#string = input("Give the text:")
+string = voice_input()
 
 ## convert inpurt to lower case
 string = string.lower()
@@ -20,7 +24,7 @@ Final = stack_algo(words)
 # empty function makes empty
 
 ## Get parsed dictionary from Final Dictionary
-Answer = get_parsed(Final)
+Answer = parser.get_parsed(Final)
 
 print (Answer)
 
