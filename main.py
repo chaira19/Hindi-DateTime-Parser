@@ -24,11 +24,11 @@ Final = stack_algo(words)
 # empty function makes empty
 
 ## Get parsed dictionary from Final Dictionary
-Answer = parser.get_parsed(Final)
+Answer = get_parsed(Final)
 
 print (Answer)
 
-emails = get_emails(words)
+emails = get_emails_parsed(words)
 
 if len(emails)!=0:
 
