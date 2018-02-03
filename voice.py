@@ -30,3 +30,13 @@ def voice_input():
 
     print (a)
     return a
+
+
+
+def voice_output(ans):
+    import pyttsx3
+    import time
+    eng=pyttsx3.init()
+    eng.say(ans)
+    eng.runAndWait()
+    
