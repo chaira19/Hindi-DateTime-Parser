@@ -24,8 +24,10 @@ Final = stack_algo(words)
 # empty function makes empty
 
 ## Get parsed dictionary from Final Dictionary
+
 Answer =get_parsed(Final)
-#Answer="DIP  DIP  POTATO CHIP"
+
+
 
 #speaks out the string Answer
 voice_output(Answer)

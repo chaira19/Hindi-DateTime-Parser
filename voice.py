@@ -2,7 +2,13 @@ def voice_input():
     
     #!/usr/bin/env python3
     # Requires PyAudio and PySpeech.
-     
+    
+	#sudo apt-get install portaudio19-dev
+
+	#pip install --allow-unverified=pyaudio pyaudio 
+	
+	#requires internet too
+
     import speech_recognition as sr
      
     # Record Audio
